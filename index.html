@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R&B/Pop Guitar Practice</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>🎸 R&B/Pop Guitar Daily Practice Sheet</h1>
+            <p class="subtitle"><strong>Time:</strong> 45–60 minutes/day | <strong>Focus:</strong> Smooth chords, pocket rhythm, soulful vibe</p>
+        </header>
+
+        <main class="grid-container">
+            <section class="card" id="warm-up">
+                <h2>✅ Warm-Up (5–10 min)</h2>
+                <ul>
+                    <li><input type="checkbox" id="chk-warmup-1"><label for="chk-warmup-1">1-2-3-4 Chromatic Exercise (Frets 1–4)</label></li>
+                    <li><input type="checkbox" id="chk-warmup-2"><label for="chk-warmup-2">Spider Walk Exercise (Index to Pinky)</label></li>
+                    <li><input type="checkbox" id="chk-warmup-3"><label for="chk-warmup-3">Light Wrist & Finger Stretch</label></li>
+                </ul>
+            </section>
+
+            <section class="card" id="chords">
+                <h2>🎵 Chord Shapes + Progressions (10–15 min)</h2>
+                <ul>
+                    <li><input type="checkbox" id="chk-chords-1"><label for="chk-chords-1">Practice Major 7th (e.g. Cmaj7, Amaj7)</label></li>
+                    <li><input type="checkbox" id="chk-chords-2"><label for="chk-chords-2">Practice Minor 7th (e.g. Am7, Em7, Bm7)</label></li>
+                    <li><input type="checkbox" id="chk-chords-3"><label for="chk-chords-3">Practice Sus & Add9 chords (e.g. Dsus2, Cadd9)</label></li>
+                </ul>
+                <p>Play R&B progressions slowly:</p>
+                <div class="progressions">
+                    <div class="prog-item">| Cmaj7 | Am7 | Dm7 | G7 |</div>
+                    <div class="prog-item">| Fmaj7 | Em7 | Am7 | D7 |</div>
+                    <div class="prog-item">| Gadd9 | Em7 | Cmaj7 | D7sus4 |</div>
+                </div>
+            </section>
+
+            <section class="card" id="rhythm">
+                <h2>🕺 Rhythm + Groove (10–15 min)</h2>
+                <ul>
+                    <li><input type="checkbox" id="chk-rhythm-1"><label for="chk-rhythm-1">Practice Groove Strumming: D – D U – U D U</label></li>
+                    <li><input type="checkbox" id="chk-rhythm-2"><label for="chk-rhythm-2">Fingerpick with P–I–M–A pattern</label></li>
+                    <li><input type="checkbox" id="chk-rhythm-3"><label for="chk-rhythm-3">Play along with a 60–82 BPM lo-fi or R&B beat</label></li>
+                    <li><input type="checkbox" id="chk-rhythm-4"><label for="chk-rhythm-4">Stay locked into the groove, not rushing</label></li>
+                </ul>
+            </section>
+            
+            <section class="card" id="repertoire">
+                <h2>🎶 Repertoire / Song Practice (15–20 min)</h2>
+                <div class="song-input-wrapper">
+                    <label for="song-title-input">Song of the week:</label>
+                    <input type="text" id="song-title-input" placeholder="Enter song title...">
+                </div>
+                <ul>
+                    <li><input type="checkbox" id="chk-song-1"><label for="chk-song-1">Practice Verse</label></li>
+                    <li><input type="checkbox" id="chk-song-2"><label for="chk-song-2">Practice Chorus</label></li>
+                    <li><input type="checkbox" id="chk-song-3"><label for="chk-song-3">Practice Bridge (if applicable)</label></li>
+                    <li><input type="checkbox" id="chk-song-4"><label for="chk-song-4">Focus on clean transitions & dynamics</label></li>
+                </ul>
+                <div class="song-suggestions">
+                    <p><strong>Suggestions:</strong> Daniel Caesar – Get You, Snoh Aalegra – I Want You Around, Giveon – Heartbreak Anniversary, Justin Bieber – All That Matters, Brent Faiyaz – Trust</p>
+                </div>
+            </section>
+
+            <section class="card" id="vibe">
+                <h2>✨ Vibe / Creative Time (5–10 min)</h2>
+                <ul>
+                    <li><input type="checkbox" id="chk-vibe-1"><label for="chk-vibe-1">Write a new 4-chord progression</label></li>
+                    <li><input type="checkbox" id="chk-vibe-2"><label for="chk-vibe-2">Improvise over a lo-fi or R&B loop</label></li>
+                    <li><input type="checkbox" id="chk-vibe-3"><label for="chk-vibe-3">Record your session (voice memo/video)</label></li>
+                    <li><input type="checkbox" id="chk-vibe-4"><label for="chk-vibe-4">Reflect: What felt good? What needs work?</label></li>
+                </ul>
+            </section>
+
+            <section class="card" id="weekly-goals">
+                <div class="card-header">
+                    <h2>🗓 Weekly Goals Checklist</h2>
+                    <button id="reset-button">Reset Week</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Focus</th>
+                            <th>✅</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Monday</td>
+                            <td>7th chords + R&B groove</td>
+                            <td><input type="checkbox" id="chk-week-mon"></td>
+                        </tr>
+                        <tr>
+                            <td>Tuesday</td>
+                            <td>Learn 1 song section (verse/chorus)</td>
+                            <td><input type="checkbox" id="chk-week-tue"></td>
+                        </tr>
+                        <tr>
+                            <td>Wednesday</td>
+                            <td>Improve strumming + transitions</td>
+                            <td><input type="checkbox" id="chk-week-wed"></td>
+                        </tr>
+                        <tr>
+                            <td>Thursday</td>
+                            <td>Try new chord voicings (maj9, sus, add9)</td>
+                            <td><input type="checkbox" id="chk-week-thu"></td>
+                        </tr>
+                        <tr>
+                            <td>Friday</td>
+                            <td>Fingerpick a verse or intro</td>
+                            <td><input type="checkbox" id="chk-week-fri"></td>
+                        </tr>
+                        <tr>
+                            <td>Saturday</td>
+                            <td>Improv/jam over lo-fi or R&B beat</td>
+                            <td><input type="checkbox" id="chk-week-sat"></td>
+                        </tr>
+                        <tr>
+                            <td>Sunday</td>
+                            <td>Play full song + reflect</td>
+                            <td><input type="checkbox" id="chk-week-sun"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+
+        <footer>
+            <div class="card" id="tools">
+                <h2>🛠 Tools You’ll Need</h2>
+                <ul>
+                    <li>Metronome</li>
+                    <li>R&B/Lo-fi Backing Tracks</li>
+                    <li>Tuner</li>
+                </ul>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
