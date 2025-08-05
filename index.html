@@ -45,12 +45,20 @@
                         <li><input type="checkbox" id="chk-chords-2"><label for="chk-chords-2">Practice Minor 7th (e.g. Am7, Em7, Bm7)</label></li>
                         <li><input type="checkbox" id="chk-chords-3"><label for="chk-chords-3">Practice Sus & Add9 chords (e.g. Dsus2, Cadd9)</label></li>
                     </ul>
-                    <p>Play R&B progressions slowly:</p>
-                    <div class="progressions">
-                        <div class="prog-item">| Cmaj7 | Am7 | Dm7 | G7 |</div>
-                        <div class="prog-item">| Fmaj7 | Em7 | Am7 | D7 |</div>
-                        <div class="prog-item">| Gadd9 | Em7 | Cmaj7 | D7sus4 |</div>
+                    
+                    <div class="progression-selector-wrapper">
+                        <label for="progression-select">Choose a Progression to Practice:</label>
+                        <select id="progression-select">
+                            <option value="">-- Select a progression --</option>
+                            <option value="prog1">Classic I-vi-ii-V</option>
+                            <option value="prog2">Soulful IV-iii-vi-II</option>
+                            <option value="prog3">Modern V-iii-I-IIsus</option>
+                        </select>
                     </div>
+
+                    <p>Click each chord to hear it:</p>
+                    <div id="progression-display" class="progressions">
+                        </div>
                 </section>
 
                 <section class="tab-panel card" id="rhythm">
