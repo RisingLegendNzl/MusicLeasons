@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveInputState = (input) => {
         if (input.type === 'checkbox') {
             localStorage.setItem(input.id, input.checked);
-        } else if (input.type === 'text' || input.tagName.toLowerCase() === 'select') {
+        } else if (input.type === 'text') {
             localStorage.setItem(input.id, input.value);
         }
     };
@@ -17,18 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const savedValue = localStorage.getItem(input.id);
             if (savedValue !== null) {
                 if (input.type === 'checkbox') {
+                    // Convert string 'true'/'false' back to boolean
                     input.checked = savedValue === 'true';
-                } else {
+                } else if (input.type === 'text') {
                     input.value = savedValue;
                 }
             }
         });
-        // Also load state for the progression select dropdown
-        const progressionSelect = document.getElementById('progression-select');
-        const savedProgression = localStorage.getItem('progression-select');
-        if (savedProgression) {
-            progressionSelect.value = savedProgression;
-        }
     };
 
     allInputs.forEach(input => {
@@ -57,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         tabPanels.forEach(panel => {
             panel.classList.toggle('active', panel.id === tabId);
         });
+        // Save the active tab to localStorage
         localStorage.setItem('activeTab', tabId);
     };
 
@@ -67,67 +63,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Chord Progression and Audio Playback ---
-    const progressions = {
-        prog1: ['Cmaj7', 'Am7', 'Dm7', 'G7'],
-        prog2: ['Fmaj7', 'Em7', 'Am7', 'D7'],
-        prog3: ['Gadd9', 'Em7', 'Cmaj7', 'D7sus4']
-    };
-
-    const progressionSelect = document.getElementById('progression-select');
-    const progressionDisplay = document.getElementById('progression-display');
-    let currentAudio = null; // Prevent multiple audios playing at once
-
-    const displayProgression = (progKey) => {
-        progressionDisplay.innerHTML = ''; // Clear previous chords
-        if (!progKey || !progressions[progKey]) return;
-
-        progressions[progKey].forEach(chordName => {
-            const chordButton = document.createElement('button');
-            chordButton.className = 'chord-button';
-            chordButton.textContent = chordName;
-            chordButton.dataset.chord = chordName;
-            progressionDisplay.appendChild(chordButton);
-        });
-    };
-
-    progressionSelect.addEventListener('change', (e) => {
-        displayProgression(e.target.value);
-        saveInputState(e.target); // Save the selected progression
-    });
-    
-    progressionDisplay.addEventListener('click', (e) => {
-        if (e.target.classList.contains('chord-button')) {
-            const chordName = e.target.dataset.chord;
-            
-            // Stop any currently playing audio
-            if (currentAudio) {
-                currentAudio.pause();
-                currentAudio.currentTime = 0;
-            }
-
-            // Play the new audio
-            const audioSrc = `assets/audio/${chordName}.mp3`; // Assumes .mp3 format
-            currentAudio = new Audio(audioSrc);
-            
-            currentAudio.play().catch(error => {
-                console.error("Error playing audio:", error);
-                // Alert the user if the audio file is missing
-                alert(`Could not play audio for ${chordName}. Make sure the file "${chordName}.mp3" exists in the "assets/audio/" folder.`);
-            });
-        }
-    });
-
     // --- Initial Load ---
     const loadLastActiveTab = () => {
         const lastTabId = localStorage.getItem('activeTab');
+        // Check if the saved tab ID exists as a button
         const lastTabExists = document.querySelector(`.tab-button[data-tab="${lastTabId}"]`);
-        setActiveTab((lastTabId && lastTabExists) ? lastTabId : tabButtons[0].dataset.tab);
+
+        if (lastTabId && lastTabExists) {
+            setActiveTab(lastTabId);
+        } else {
+            // Default to the first tab if none is saved or if the saved one is invalid
+            setActiveTab(tabButtons[0].dataset.tab);
+        }
     };
     
     // Load all saved states on startup
     loadInputState();
     loadLastActiveTab();
-    displayProgression(progressionSelect.value); // Display the saved progression on load
-
 });
