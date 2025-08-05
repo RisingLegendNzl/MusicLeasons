@@ -169,61 +169,23 @@ input[type="checkbox"]:checked + label {
 }
 
 /* --- Section Specific Styles --- */
-
-/* Chords Section */
-.progression-selector-wrapper {
-    margin: 1.5rem 0;
-}
-
-.progression-selector-wrapper label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: var(--text-primary);
-}
-
-#progression-select {
-    width: 100%;
-    padding: 0.75rem;
-    border-radius: 6px;
-    border: 1px solid var(--border-color);
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    font-family: var(--font-family);
-    font-size: 1rem;
-    cursor: pointer;
-}
-
-.progressions {
+#chords .progressions {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
     margin-top: 1rem;
-    justify-content: center;
 }
 
-.chord-button {
+.prog-item {
     background-color: rgba(0,0,0,0.2);
-    padding: 1rem 1.5rem;
+    padding: 0.5rem 1rem;
     border-radius: 6px;
     font-family: monospace;
-    font-size: 1.25rem;
+    font-size: 1rem;
     letter-spacing: 1px;
     text-align: center;
-    border: 1px solid var(--border-color);
-    color: var(--text-secondary);
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
 }
 
-.chord-button:hover {
-    background-color: var(--accent-primary);
-    color: var(--bg-primary);
-    transform: scale(1.05);
-    border-color: var(--accent-primary);
-}
-
-/* Repertoire Section */
 #repertoire .song-input-wrapper {
     margin-bottom: 1rem;
 }
