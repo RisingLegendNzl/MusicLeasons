@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- State saving for inputs ---
     const allInputs = document.querySelectorAll('input[type="checkbox"], input[type="text"]');
     const resetButton = document.getElementById('reset-button');
     const weeklyCheckboxes = document.querySelectorAll('#weekly-goals input[type="checkbox"]');
 
-    // Function to save the state of an input to localStorage
-    const saveState = (input) => {
+    const saveInputState = (input) => {
         if (input.type === 'checkbox') {
             localStorage.setItem(input.id, input.checked);
         } else if (input.type === 'text') {
@@ -12,13 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Function to load the state of all inputs from localStorage
-    const loadState = () => {
+    const loadInputState = () => {
         allInputs.forEach(input => {
             const savedValue = localStorage.getItem(input.id);
             if (savedValue !== null) {
                 if (input.type === 'checkbox') {
-                    // Convert string 'true'/'false' back to boolean
                     input.checked = savedValue === 'true';
                 } else if (input.type === 'text') {
                     input.value = savedValue;
@@ -27,26 +25,58 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Add event listeners to all inputs to save state on change
     allInputs.forEach(input => {
-        input.addEventListener('change', () => {
-            saveState(input);
-        });
+        input.addEventListener('change', () => saveInputState(input));
     });
 
-    // Reset button functionality
     if (resetButton) {
         resetButton.addEventListener('click', () => {
-            // Confirm with the user before resetting
             if (confirm('Are you sure you want to reset the weekly goals? This cannot be undone.')) {
                 weeklyCheckboxes.forEach(checkbox => {
                     checkbox.checked = false;
-                    localStorage.removeItem(checkbox.id); // Remove from storage
+                    localStorage.removeItem(checkbox.id);
                 });
             }
         });
     }
 
-    // Load the saved state when the page loads
-    loadState();
+    // --- Tab Functionality ---
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+
+    const setActiveTab = (tabId) => {
+        tabButtons.forEach(button => {
+            button.classList.toggle('active', button.dataset.tab === tabId);
+        });
+        tabPanels.forEach(panel => {
+            panel.classList.toggle('active', panel.id === tabId);
+        });
+        // Save the active tab to localStorage
+        localStorage.setItem('activeTab', tabId);
+    };
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const tabId = button.dataset.tab;
+            setActiveTab(tabId);
+        });
+    });
+
+    // --- Initial Load ---
+    const loadLastActiveTab = () => {
+        const lastTabId = localStorage.getItem('activeTab');
+        // Check if the saved tab ID exists as a button
+        const lastTabExists = document.querySelector(`.tab-button[data-tab="${lastTabId}"]`);
+
+        if (lastTabId && lastTabExists) {
+            setActiveTab(lastTabId);
+        } else {
+            // Default to the first tab if none is saved or if the saved one is invalid
+            setActiveTab(tabButtons[0].dataset.tab);
+        }
+    };
+    
+    // Load all saved states on startup
+    loadInputState();
+    loadLastActiveTab();
 });
