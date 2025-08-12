@@ -77,7 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     
-    // Load all saved states on startup
-    loadInputState();
-    loadLastActiveTab();
+    // Load all saved states on startup, but only if we are on the guitar page
+    if (document.querySelector('.tabs-container')) {
+        loadInputState();
+        loadLastActiveTab();
+    }
 });
