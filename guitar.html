@@ -65,10 +65,37 @@
 
                     <section class="tab-panel card" id="rhythm">
                         <h2>Rhythm + Groove (10–15 min)</h2>
+                        <div class="interactive-module">
+                            <h4>Groove Strumming</h4>
+                            <div class="strum-visualizer" id="strum-visualizer">
+                                <span class="strum-arrow down">↓</span>
+                                <span class="strum-beat-label">1</span>
+                                <span class="strum-arrow down">↓</span>
+                                <span class="strum-beat-label">&</span>
+                                <span class="strum-arrow up">↑</span>
+                                <span class="strum-beat-label">2</span>
+                                <span class="strum-arrow">&nbsp;</span>
+                                <span class="strum-beat-label">&</span>
+                                <span class="strum-arrow up">↑</span>
+                                <span class="strum-beat-label">3</span>
+                                <span class="strum-arrow down">↓</span>
+                                <span class="strum-beat-label">&</span>
+                                <span class="strum-arrow up">↑</span>
+                                <span class="strum-beat-label">4</span>
+                                <span class="strum-arrow">&nbsp;</span>
+                                <span class="strum-beat-label">&</span>
+                            </div>
+                            <p class="instruction">Practice the pattern: D - D U - U D U. Use the Metronome in the Tools tab!</p>
+                        </div>
+                         <div class="interactive-module">
+                            <h4>Practice with a Beat</h4>
+                            <p class="instruction">Play your chord progressions along with this beat to lock in your groove.</p>
+                            <audio controls src="assets/audio/rnb-beat.mp3" class="backing-track-player">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
                         <ul>
-                            <li><input type="checkbox" id="chk-rhythm-1"><label for="chk-rhythm-1">Practice Groove Strumming: D – D U – U D U</label></li>
                             <li><input type="checkbox" id="chk-rhythm-2"><label for="chk-rhythm-2">Fingerpick with P–I–M–A pattern</label></li>
-                            <li><input type="checkbox" id="chk-rhythm-3"><label for="chk-rhythm-3">Play along with a 60–82 BPM lo-fi or R&B beat</label></li>
                             <li><input type="checkbox" id="chk-rhythm-4"><label for="chk-rhythm-4">Stay locked into the groove, not rushing</label></li>
                         </ul>
                     </section>
@@ -85,6 +112,10 @@
                             <li><input type="checkbox" id="chk-song-3"><label for="chk-song-3">Practice Bridge (if applicable)</label></li>
                             <li><input type="checkbox" id="chk-song-4"><label for="chk-song-4">Focus on clean transitions & dynamics</label></li>
                         </ul>
+                        <div class="interactive-module">
+                            <h4>Practice Notes</h4>
+                            <textarea id="practice-notes" placeholder="What felt good today? What needs work on this song?"></textarea>
+                        </div>
                         <div class="song-suggestions">
                             <p><strong>Suggestions:</strong> Daniel Caesar – Get You, Snoh Aalegra – I Want You Around, Giveon – Heartbreak Anniversary, Justin Bieber – All That Matters, Brent Faiyaz – Trust</p>
                         </div>
@@ -106,46 +137,32 @@
                             <button id="reset-button" class="button-secondary">Reset Week</button>
                         </div>
                         <table>
-                            <thead>
-                                <tr>
-                                    <th>Day</th>
-                                    <th>Focus</th>
-                                    <th>✅</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Monday</td><td>7th chords + R&B groove</td><td><input type="checkbox" id="chk-week-mon"></td>
-                                </tr>
-                                <tr>
-                                    <td>Tuesday</td><td>Learn 1 song section (verse/chorus)</td><td><input type="checkbox" id="chk-week-tue"></td>
-                                </tr>
-                                <tr>
-                                    <td>Wednesday</td><td>Improve strumming + transitions</td><td><input type="checkbox" id="chk-week-wed"></td>
-                                </tr>
-                                <tr>
-                                    <td>Thursday</td><td>Try new chord voicings (maj9, sus, add9)</td><td><input type="checkbox" id="chk-week-thu"></td>
-                                </tr>
-                                <tr>
-                                    <td>Friday</td><td>Fingerpick a verse or intro</td><td><input type="checkbox" id="chk-week-fri"></td>
-                                </tr>
-                                <tr>
-                                    <td>Saturday</td><td>Improv/jam over lo-fi or R&B beat</td><td><input type="checkbox" id="chk-week-sat"></td>
-                                </tr>
-                                <tr>
-                                    <td>Sunday</td><td>Play full song + reflect</td><td><input type="checkbox" id="chk-week-sun"></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                            </table>
                     </section>
 
                     <section class="tab-panel card" id="tools">
-                        <h2>Tools You’ll Need</h2>
-                        <ul class="tools-list">
-                            <li>Metronome</li>
-                            <li>R&B/Lo-fi Backing Tracks</li>
-                            <li>Tuner</li>
-                        </ul>
+                        <h2>Practice Tools</h2>
+                        <div class="interactive-module">
+                           <h4>Metronome</h4>
+                           <div class="metronome">
+                                <div class="bpm-display">
+                                    <span id="bpm-value">100</span> BPM
+                                </div>
+                                <div class="metronome-controls">
+                                    <button class="button-secondary" id="decrease-bpm">-</button>
+                                    <input type="range" id="bpm-slider" min="40" max="220" value="100">
+                                    <button class="button-secondary" id="increase-bpm">+</button>
+                                </div>
+                                <button class="button" id="start-stop-metronome">Start</button>
+                           </div>
+                        </div>
+                        <div class="interactive-module">
+                            <h4>Other Essentials</h4>
+                             <ul class="tools-list">
+                                <li>R&B/Lo-fi Backing Tracks</li>
+                                <li>Tuner</li>
+                            </ul>
+                        </div>
                     </section>
                 </div>
             </div>
