@@ -6,6 +6,7 @@
     --text-muted: #6C757D;
     --accent-primary: #007BFF;
     --accent-hover: #0056b3;
+    --accent-active: #05C46B; /* A green for active state */
     --border-color: #DEE2E6;
     --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
     --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
@@ -13,11 +14,7 @@
     --border-radius: 8px;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: var(--font-family);
@@ -26,306 +23,97 @@ body {
     line-height: 1.7;
 }
 
-.container {
-    max-width: 1140px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-}
+.container { max-width: 1140px; margin: 0 auto; padding: 0 1.5rem; }
 
 /* --- Global Header & Footer --- */
-.global-header {
-    background: var(--bg-white);
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--border-color);
-    box-shadow: var(--shadow-sm);
-}
-.global-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.brand-logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text-dark);
-    text-decoration: none;
-}
-.main-nav a {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-weight: 600;
-    margin-left: 1.5rem;
-    transition: color 0.2s ease;
-}
-.main-nav a:hover {
-    color: var(--accent-primary);
-}
-
-.global-footer {
-    text-align: center;
-    padding: 2rem 0;
-    margin-top: 3rem;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-}
+.global-header { background: var(--bg-white); padding: 1rem 0; border-bottom: 1px solid var(--border-color); box-shadow: var(--shadow-sm); }
+.global-header .container { display: flex; justify-content: space-between; align-items: center; }
+.brand-logo { font-size: 1.5rem; font-weight: 700; color: var(--text-dark); text-decoration: none; }
+.main-nav a { color: var(--text-muted); text-decoration: none; font-weight: 600; margin-left: 1.5rem; transition: color 0.2s ease; }
+.main-nav a:hover { color: var(--accent-primary); }
+.global-footer { text-align: center; padding: 2rem 0; margin-top: 3rem; color: var(--text-muted); font-size: 0.9rem; }
 
 /* --- Buttons --- */
-.button {
-    display: inline-block;
-    background-color: var(--accent-primary);
-    color: var(--bg-white);
-    padding: 0.75rem 1.5rem;
-    border-radius: var(--border-radius);
-    text-decoration: none;
-    font-weight: 600;
-    transition: background-color 0.2s ease;
-}
-.button:hover {
-    background-color: var(--accent-hover);
-}
-.button-secondary {
-    background-color: var(--text-muted);
-}
-.button-secondary:hover {
-    background-color: var(--text-dark);
-}
-.button-disabled {
-    background-color: #ccc;
-    color: #666;
-    cursor: not-allowed;
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    border-radius: var(--border-radius);
-    text-decoration: none;
-    font-weight: 600;
-}
+.button { display: inline-block; background-color: var(--accent-primary); color: var(--bg-white); padding: 0.75rem 1.5rem; border-radius: var(--border-radius); text-decoration: none; font-weight: 600; transition: background-color 0.2s ease; border: none; cursor: pointer; }
+.button:hover { background-color: var(--accent-hover); }
+.button-secondary { background-color: #e9ecef; color: var(--text-dark); border: 1px solid var(--border-color); }
+.button-secondary:hover { background-color: #d8dde2; }
+.button-disabled { background-color: #ccc; color: #666; cursor: not-allowed; display: inline-block; padding: 0.75rem 1.5rem; border-radius: var(--border-radius); text-decoration: none; font-weight: 600; }
 
-
-/* --- Homepage Styles --- */
-.hero-section {
-    text-align: center;
-    padding: 5rem 0;
-}
-.hero-section h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-}
-.hero-section p {
-    font-size: 1.2rem;
-    color: var(--text-muted);
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.courses-section {
-    padding: 3rem 0;
-}
-.courses-section h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 3rem;
-}
-.course-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-}
-.course-card {
-    background-color: var(--bg-white);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    text-decoration: none;
-    color: var(--text-dark);
-    display: flex;
-    flex-direction: column;
-}
-.course-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-md);
-}
-.course-card.coming-soon {
-    opacity: 0.6;
-}
-.course-card.coming-soon:hover {
-     transform: none;
-     box-shadow: var(--shadow-sm);
-}
-
-.course-card-content {
-    padding: 1.5rem;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
-.course-card-content h3 {
-    margin-bottom: 0.5rem;
-    font-size: 1.25rem;
-}
-.course-card-content p {
-    color: var(--text-muted);
-    flex-grow: 1;
-    margin-bottom: 1.5rem;
-}
+/* --- Homepage Styles (Condensed) --- */
+.hero-section { text-align: center; padding: 5rem 0; }
+.hero-section h1 { font-size: 3rem; font-weight: 700; margin-bottom: 1rem; }
+.hero-section p { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+.courses-section { padding: 3rem 0; }
+.courses-section h2 { text-align: center; font-size: 2rem; margin-bottom: 3rem; }
+.course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+.course-card { background-color: var(--bg-white); border: 1px solid var(--border-color); border-radius: var(--border-radius); overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.2s ease, box-shadow 0.2s ease; text-decoration: none; color: var(--text-dark); display: flex; flex-direction: column; }
+.course-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+.course-card.coming-soon { opacity: 0.6; }
+.course-card.coming-soon:hover { transform: none; box-shadow: var(--shadow-sm); }
+.course-card-content { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+.course-card-content h3 { margin-bottom: 0.5rem; font-size: 1.25rem; }
+.course-card-content p { color: var(--text-muted); flex-grow: 1; margin-bottom: 1.5rem; }
 
 /* --- Guitar Course Page Styles --- */
-.course-header {
-    text-align: center;
-    padding: 3rem 0;
-}
-.course-header h1 {
-    font-size: 2.5rem;
-}
-.course-header .subtitle {
-    color: var(--text-muted);
-    font-size: 1.1rem;
-}
-.tabs-nav {
-    display: flex;
-    flex-wrap: wrap;
-    border-bottom: 1px solid var(--border-color);
-    margin-bottom: 1.5rem;
-}
-.tab-button {
-    padding: 1rem 1.5rem;
-    cursor: pointer;
-    background: none;
-    border: none;
-    border-bottom: 3px solid transparent;
-    color: var(--text-muted);
-    font-size: 1rem;
-    font-weight: 600;
-    transition: color 0.3s ease, border-color 0.3s ease;
-    margin-bottom: -1px;
-}
-.tab-button:hover {
-    color: var(--text-dark);
-}
-.tab-button.active {
-    color: var(--accent-primary);
-    border-bottom-color: var(--accent-primary);
-}
-.tab-panel {
-    display: none;
-}
-.tab-panel.active {
-    display: block;
-    animation: fadeIn 0.5s ease;
-}
-@keyframes fadeIn {
-    from { opacity: 0; } to { opacity: 1; }
-}
+.course-header { text-align: center; padding: 3rem 0; }
+.course-header h1 { font-size: 2.5rem; }
+.course-header .subtitle { color: var(--text-muted); font-size: 1.1rem; }
+.tabs-nav { display: flex; flex-wrap: wrap; border-bottom: 1px solid var(--border-color); margin-bottom: 1.5rem; }
+.tab-button { padding: 1rem 1.5rem; cursor: pointer; background: none; border: none; border-bottom: 3px solid transparent; color: var(--text-muted); font-size: 1rem; font-weight: 600; transition: color 0.3s ease, border-color 0.3s ease; margin-bottom: -1px; }
+.tab-button:hover { color: var(--text-dark); }
+.tab-button.active { color: var(--accent-primary); border-bottom-color: var(--accent-primary); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; animation: fadeIn 0.5s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-.card {
-    background-color: var(--bg-white);
-    border-radius: var(--border-radius);
-    padding: 2rem;
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-sm);
-}
-.card h2 {
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--border-color);
-    color: var(--text-dark);
-}
-.card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.card ul {
-    list-style: none;
-}
-.card li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.75rem;
-    color: var(--text-muted);
-}
-input[type="checkbox"] {
-    margin-right: 12px;
-    cursor: pointer;
-    width: 18px;
-    height: 18px;
-    accent-color: var(--accent-primary);
-}
-.card label {
-    cursor: pointer;
-}
-input[type="checkbox"]:checked + label {
-    text-decoration: line-through;
-    color: var(--text-dark);
-}
+.card { background-color: var(--bg-white); border-radius: var(--border-radius); padding: 2rem; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); }
+.card h2 { font-size: 1.4rem; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color); color: var(--text-dark); }
+.card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color); }
+.card-header h2 { border: none; padding: 0; margin: 0; }
+.card ul { list-style: none; }
+.card li { display: flex; align-items: center; margin-bottom: 0.75rem; color: var(--text-muted); }
+input[type="checkbox"] { margin-right: 12px; cursor: pointer; width: 18px; height: 18px; accent-color: var(--accent-primary); }
+.card label { cursor: pointer; }
+input[type="checkbox"]:checked + label { text-decoration: line-through; color: var(--text-dark); }
 
-.prog-item {
-    background-color: var(--bg-light);
-    border: 1px solid var(--border-color);
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    font-family: monospace;
-    text-align: center;
-}
-.progressions {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 1rem;
-}
+/* --- Interactive Modules --- */
+.interactive-module { margin-bottom: 2rem; padding: 1.5rem; background-color: var(--bg-light); border-radius: var(--border-radius); }
+.interactive-module h4 { font-size: 1.1rem; margin-bottom: 1rem; }
+.instruction { font-size: 0.9rem; color: var(--text-muted); margin-top: 1rem; }
+textarea#practice-notes { width: 100%; min-height: 120px; padding: 0.75rem; border-radius: var(--border-radius); border: 1px solid var(--border-color); font-family: var(--font-family); font-size: 1rem; }
 
-#repertoire input[type="text"], #repertoire label {
-    display: block;
-    width: 100%;
-}
-#repertoire label {
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-#repertoire input[type="text"] {
-    padding: 0.75rem;
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    font-size: 1rem;
-}
-.song-suggestions {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    margin-top: 1rem;
-    font-style: italic;
-}
+/* Metronome Styles */
+.metronome { text-align: center; }
+.bpm-display { font-size: 2.5rem; font-weight: 600; margin-bottom: 1rem; }
+.metronome-controls { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; }
+.metronome-controls .button-secondary { width: 40px; height: 40px; font-size: 1.5rem; padding: 0; line-height: 40px; }
+input[type="range"] { flex-grow: 1; max-width: 300px; }
 
-#weekly-goals table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-}
-#weekly-goals th, #weekly-goals td {
-    padding: 0.75rem;
-    text-align: left;
-    border-bottom: 1px solid var(--border-color);
-}
-#weekly-goals td:last-child {
-    text-align: center;
-}
+/* Strumming Visualizer Styles */
+.strum-visualizer { display: flex; justify-content: space-around; background: #e9ecef; padding: 1rem; border-radius: var(--border-radius); user-select: none; }
+.strum-arrow { font-size: 2rem; font-weight: bold; color: #adb5bd; transition: color 0.1s ease, transform 0.1s ease; position: relative; }
+.strum-arrow.active { color: var(--accent-active); transform: scale(1.2); }
+.strum-beat-label { position: absolute; bottom: -20px; font-size: 0.8rem; color: var(--text-muted); }
 
-.tools-list {
-    display: flex;
-    justify-content: space-around;
-    padding: 1rem 0;
-    font-weight: 600;
-}
+/* Backing Track Player */
+.backing-track-player { width: 100%; margin-top: 1rem; }
+
+/* General Content in Cards */
+.prog-item { background-color: var(--bg-light); border: 1px solid var(--border-color); padding: 0.5rem 1rem; border-radius: 6px; font-family: monospace; text-align: center; }
+.progressions { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem; }
+#repertoire input[type="text"], #repertoire label { display: block; width: 100%; }
+#repertoire label { font-weight: 600; margin-bottom: 0.5rem; }
+#repertoire input[type="text"] { padding: 0.75rem; border: 1px solid var(--border-color); border-radius: var(--border-radius); font-size: 1rem; }
+.song-suggestions { font-size: 0.9rem; color: var(--text-muted); margin-top: 1rem; font-style: italic; }
+#weekly-goals table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+#weekly-goals th, #weekly-goals td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border-color); }
+#weekly-goals td:last-child { text-align: center; }
+.tools-list { list-style: circle; padding-left: 1.5rem; }
+.tools-list li { margin-bottom: 0.5rem; }
 
 /* --- Responsive Design --- */
 @media (max-width: 768px) {
-    .hero-section h1, .course-header h1 {
-        font-size: 2.2rem;
-    }
-    .tab-button {
-        padding: 0.8rem 1rem;
-        font-size: 0.9rem;
-    }
+    .hero-section h1, .course-header h1 { font-size: 2.2rem; }
+    .tab-button { padding: 0.8rem 1rem; font-size: 0.9rem; }
 }
